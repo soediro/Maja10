@@ -2711,7 +2711,8 @@ bool LoadBlockIndex(bool fAllowNew)
 {
     if (fTestNet)
     {
-        pchMessageStart[0] = 0xcd;
+        //pchMessageStart[0] = 0xcd;
+		pchMessageStart[0] = 0xc9;	// TNB
         pchMessageStart[1] = 0xf2;
         pchMessageStart[2] = 0xc0;
         pchMessageStart[3] = 0xef;
@@ -2740,7 +2741,8 @@ bool LoadBlockIndex(bool fAllowNew)
 
         const char* pszTimestamp = "ETX GENESIS";
         CTransaction txNew;
-        txNew.nTime = 1544127820;
+        //txNew.nTime = 1544127820;
+		txNew.nTime = 1535932802; // TNB
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(9999) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -2750,9 +2752,11 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1544127820;
+        //block.nTime    = 1544127820;
+		block.nTime    = 1535932802;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = !fTestNet ? 10595263 : 409503;
+        //block.nNonce   = !fTestNet ? 10595263 : 409503;
+		block.nNonce   = !fTestNet ? 360439571 : 409503;
 		
         block.print();
 
